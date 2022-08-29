@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/klinic',{
 })
 
 
-app.use('/', appRouter)
+app.use('/api', appRouter)
 
 
 const port = process.env.PORT || 5000

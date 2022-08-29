@@ -7,6 +7,7 @@ const clientsSchema = mongoose.Schema({
    adress : String ,
    year : String,
    category : String,
+   date : String,
    subCategory : [
       {
          name : String,

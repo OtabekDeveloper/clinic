@@ -18,6 +18,18 @@ async function getclients(req , res){
    }
 }
 
+async function getDay(req , res){
+   try{
+      const clients = await clientsModel.find({
+         date : req.body.date,
+         category : req.body.category
+      })
+      return res.status(200).send(clients)
+   }catch(err){
+      return res.status(400).send(err)
+   }
+}
+
 async function deleteclients(req , res){
    try{
       let clientsId = req.params.id
@@ -42,5 +54,6 @@ module.exports = {
    addclients , 
    getclients ,
    deleteclients ,
-   updateclients
+   updateclients,
+   getDay
 }
