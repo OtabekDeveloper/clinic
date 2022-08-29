@@ -7,7 +7,16 @@ const userSchema = mongoose.Schema({
    tel : String ,
    login : String ,
    password : String ,
-   category : String
+   category : String,
+   subCategory :{
+      type :  [
+         {
+            name : String , 
+            price : Number
+         }
+      ],
+      default : null
+   }
 })
 
 

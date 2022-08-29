@@ -26,6 +26,21 @@ async function getUser(req , res){
    }
 }
 
+async function getCategory(req , res){
+   try{
+      const user = await userModel.aggregate([
+         {
+            $group : {
+               _id : {category : "$category" , subCategory : "$subCategory"}
+            }
+         }
+      ])
+      return res.status(200).send(user)
+   }catch(err){
+      return res.status(400).send(err)
+   }
+}
+
 async function deleteUser(req , res){
    try{
       let userId = req.params.id
@@ -50,5 +65,6 @@ module.exports = {
    addUser , 
    getUser ,
    deleteUser ,
-   updateUser
+   updateUser ,
+   getCategory
 }
