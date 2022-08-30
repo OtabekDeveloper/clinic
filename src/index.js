@@ -3,9 +3,9 @@ const app = express()
 const mongoose = require('mongoose')
 const appRouter = require('./router')
 app.use(express.json())
-// const cors = require('cors')
+const cors = require('cors')
 
-// app.use(cors())
+app.use(cors())
 
 mongoose.connect('mongodb://localhost:27017/klinic',{
     useNewUrlParser:true,
