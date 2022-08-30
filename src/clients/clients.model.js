@@ -14,7 +14,8 @@ const clientsSchema = mongoose.Schema({
          price : Number
       }
    ],
-   price : Number
+   price : Number,
+   dailyCount : Number
 })
 
 

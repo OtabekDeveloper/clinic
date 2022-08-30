@@ -2,10 +2,25 @@ const clientsModel = require('./clients.model')
 
 async function addclients( req ,res ){
    try{
-      let result = await clientsModel.create(req.body)
+      let count = await clientsModel.find({
+         date : req.body.date,
+         category : req.body.category
+      })
+      let cliet = {
+         fname : req.body.fname ,
+         lname : req.body.lname ,
+         adress : req.body.adress ,
+         year : req.body.year,
+         category : req.body.category,
+         date : req.body.date,
+         subCategory : req.body.subCategory,
+         price : req.body.price,
+         dailyCount : count.length + 1
+      }
+      let result = await clientsModel.create(cliet)
       return res.status(200).send(result)
    }catch(err){
-      return res.status(400).send('hato')
+      return res.status(400).send(err)
    }
 }
 
