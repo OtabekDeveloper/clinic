@@ -27,6 +27,7 @@ async function addclients( req ,res ){
 async function getclients(req , res){
    try{
       const clients = await clientsModel.aggregate([
+         {$match : {category : req.body.category}},
          {$group : {
             _id : {date : "$date"},
             clients : {$push : "$$ROOT"}
