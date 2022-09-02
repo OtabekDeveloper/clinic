@@ -26,7 +26,12 @@ async function addclients( req ,res ){
 
 async function getclients(req , res){
    try{
-      const clients = await clientsModel.find({})
+      const clients = await clientsModel.aggregate([
+         {$group : {
+            _id : {date : "$date"},
+            clients : {$push : "$$ROOT"}
+         }}
+      ])
       return res.status(200).send(clients)
    }catch(err){
       return res.status(400).send(err)
@@ -58,8 +63,10 @@ async function deleteclients(req , res){
 async function updateclients(req , res){
    try{
       let clientsId = req.params.id
-      let result = await clientsModel.findByIdAndUpdate(clientsId , req.body)
-      return res.status(200).send(result)
+      let cliend = await clientsModel.findById(clientsId)
+      cliend.status = req.body.status
+      await cliend.save()
+      return res.status(200).send("Success")
    }catch(err){
       return res.status(400).send(err)
    }

@@ -15,6 +15,10 @@ const clientsSchema = mongoose.Schema({
       }
    ],
    price : Number,
+   status : {
+      type : Number,
+      default : 0
+   },
    dailyCount : Number
 })
 
