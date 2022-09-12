@@ -7,7 +7,7 @@ router.route('/').post(clientsController.addclients)
 
 router.route('/day').post(clientsController.getDay)
 
-router.route('/').get(clientsController.getclients)
+router.route('/full').post(clientsController.getclients)
 
 router.route('/:id').put(clientsController.updateclients)
 
