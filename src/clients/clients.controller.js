@@ -63,10 +63,8 @@ async function deleteclients(req , res){
 async function updateclients(req , res){
    try{
       let clientsId = req.params.id
-      let cliend = await clientsModel.findById(clientsId)
-      cliend.status = req.body.status
-      await cliend.save()
-      return res.status(200).send("Success")
+      let result = await clientsModel.findByIdAndUpdate(clientsId , req.body)
+      return res.status(200).send(result)
    }catch(err){
       return res.status(400).send(err)
    }

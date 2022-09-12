@@ -8,6 +8,7 @@ const clientsSchema = mongoose.Schema({
    year : String,
    category : String,
    date : String,
+   month : Number,
    subCategory : [
       {
          name : String,
@@ -15,10 +16,6 @@ const clientsSchema = mongoose.Schema({
       }
    ],
    price : Number,
-   status : {
-      type : Number,
-      default : 0
-   },
    dailyCount : Number
 })
 
